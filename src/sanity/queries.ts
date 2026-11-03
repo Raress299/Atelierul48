@@ -1,7 +1,6 @@
 export const PRODUCTS_QUERY = `*[_type == "product" && active != false] | order(order asc, name asc) {
   _id,
   name,
-  "slug": slug.current,
   description,
   wood,
   finish,
