@@ -1,16 +1,22 @@
-import { BRAND, whatsappLink } from "@/lib/constants";
+import { whatsappLinkFor } from "@/sanity/load";
 
-const link = whatsappLink(
-  `Bună! Am descoperit ${BRAND} și aș dori detalii despre tocătoare.`
-);
+type WhatsAppFloatProps = {
+  brand: string;
+  whatsappNumber: string;
+};
 
-export function WhatsAppFloat() {
+export function WhatsAppFloat({ brand, whatsappNumber }: WhatsAppFloatProps) {
+  const link = whatsappLinkFor(
+    whatsappNumber,
+    `Bună! Am descoperit ${brand} și aș dori detalii despre tocătoare.`
+  );
+
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_-6px_rgba(0,0,0,0.45)] transition active:scale-95 md:bottom-8 md:right-8 md:h-14 md:w-14"
+      className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_-6px_rgba(0,0,0,0.45)] transition active:scale-95 md:bottom-8 md:right-8"
       aria-label="Scrie pe WhatsApp"
     >
       <svg className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

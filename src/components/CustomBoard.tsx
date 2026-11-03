@@ -1,6 +1,19 @@
-import { customBoard, whatsappLink } from "@/lib/constants";
+import { customBoard } from "@/lib/constants";
+import { whatsappLinkFor } from "@/sanity/load";
 
-export function CustomBoard() {
+type CustomBoardProps = {
+  title: string;
+  description: string;
+  brand: string;
+  whatsappNumber: string;
+};
+
+export function CustomBoard({
+  title,
+  description,
+  brand,
+  whatsappNumber,
+}: CustomBoardProps) {
   return (
     <section
       id="personalizat"
@@ -12,10 +25,10 @@ export function CustomBoard() {
             Comandă specială
           </p>
           <h2 className="mt-2 font-display text-[2rem] leading-tight text-ink sm:mt-3 sm:text-4xl md:text-5xl">
-            {customBoard.title}
+            {title}
           </h2>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted sm:mt-5 sm:text-base md:text-lg">
-            {customBoard.description}
+            {description}
           </p>
           <ul className="mt-6 space-y-3 sm:mt-8">
             {customBoard.points.map((point) => (
@@ -42,7 +55,10 @@ export function CustomBoard() {
             inspirație — îți propunem esența și prețul.
           </p>
           <a
-            href={whatsappLink(customBoard.message)}
+            href={whatsappLinkFor(
+              whatsappNumber,
+              `Bună! Aș dori un tocător personalizat de la ${brand}. Am câteva idei despre formă / dimensiuni / esență.`
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-12 w-full items-center justify-center bg-walnut px-5 py-3.5 text-sm tracking-wide text-cream transition active:bg-walnut-deep sm:mt-8 sm:hover:bg-walnut-deep"

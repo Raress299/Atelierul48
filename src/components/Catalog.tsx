@@ -1,7 +1,14 @@
 import Image from "next/image";
-import { products, whatsappLink } from "@/lib/constants";
+import type { ProductCard } from "@/sanity/types";
+import { whatsappLinkFor } from "@/sanity/load";
 
-export function Catalog() {
+type CatalogProps = {
+  products: ProductCard[];
+  brand: string;
+  whatsappNumber: string;
+};
+
+export function Catalog({ products, brand, whatsappNumber }: CatalogProps) {
   return (
     <section
       id="catalog"
@@ -58,8 +65,9 @@ export function Catalog() {
                   {product.wood} · {product.finish} · {product.detail}
                 </p>
                 <a
-                  href={whatsappLink(
-                    `Bună! Aș dori să comand piesa „${product.name}” de la Atelierul48.`
+                  href={whatsappLinkFor(
+                    whatsappNumber,
+                    `Bună! Aș dori să comand piesa „${product.name}” de la ${brand}.`
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

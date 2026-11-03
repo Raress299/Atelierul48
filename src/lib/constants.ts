@@ -10,6 +10,19 @@ export function whatsappLink(message: string) {
 
 export const products = [
   {
+    id: "frunza-mere",
+    name: "Frunză",
+    description:
+      "Sculptată în formă de frunză, fiecare lob e tăiat de mână — deci fiecare Frunză e altfel. Lemn masiv, finisaj food-safe pentru fructe, brânzeturi sau un platou de duminică. Cadoul care transformă masa într-un gest frumos.",
+    wood: "Lemn masiv sculptat",
+    finish: "Ulei mineral food-safe",
+    detail: "Formă frunză",
+    price: "La cerere",
+    image: "/products/frunza-mere.jpg",
+    alt: "Platou sculptat în formă de frunză",
+    objectPosition: "50% 45%",
+  },
+  {
     id: "maner-ars",
     name: "Arcă",
     description:
@@ -49,32 +62,6 @@ export const products = [
     objectPosition: "50% 42%",
   },
   {
-    id: "flight-vertical",
-    name: "Degustare",
-    description:
-      "Lucrată manual ca să țină șase pahare și privirile oaspeților — fiecare placă e unică. Lemn masiv, finisaj food-safe, gândită pentru seri lungi și platouri la masă. Cadoul potrivit când vrei să dai ceva cu poveste, nu un obiect anonim.",
-    wood: "Lemn masiv live-edge",
-    finish: "Ulei mineral food-safe",
-    detail: "6 locașuri",
-    price: "La cerere",
-    image: "/products/flight-vertical.jpg",
-    alt: "Placă de degustare cu 6 locașuri",
-    objectPosition: "50% 38%",
-  },
-  {
-    id: "flight-atelier",
-    name: "Flight",
-    description:
-      "Din masa atelierului, cu muchie vie și locașuri tăiate pe rând — nu există două Flight la fel. Ulei mineral food-safe, lemn masiv, rezistentă la folosire zilnică. Arată premium când servești; se simte sincer când o ții în mână.",
-    wood: "Lemn masiv",
-    finish: "Ulei mineral food-safe",
-    detail: "6 locașuri",
-    price: "La cerere",
-    image: "/products/flight-atelier.jpg",
-    alt: "Placă flight pe masa de atelier",
-    objectPosition: "50% 50%",
-  },
-  {
     id: "live-edge",
     name: "Scoarță",
     description:
@@ -112,19 +99,6 @@ export const products = [
     image: "/products/platou-burl.jpg",
     alt: "Platou Burl cu adâncitură sculptată",
     objectPosition: "50% 48%",
-  },
-  {
-    id: "frunza-mere",
-    name: "Frunză",
-    description:
-      "Sculptată în formă de frunză, fiecare lob e tăiat de mână — deci fiecare Frunză e altfel. Lemn masiv, finisaj food-safe pentru fructe, brânzeturi sau un platou de duminică. Cadoul care transformă masa într-un gest frumos.",
-    wood: "Lemn masiv sculptat",
-    finish: "Ulei mineral food-safe",
-    detail: "Formă frunză",
-    price: "La cerere",
-    image: "/products/frunza-mere.jpg",
-    alt: "Platou sculptat în formă de frunză",
-    objectPosition: "50% 45%",
   },
 ] as const;
 

@@ -1,19 +1,42 @@
 import Image from "next/image";
-import { BRAND, HERO_IMAGE_MOBILE, whatsappLink } from "@/lib/constants";
+import { whatsappLinkFor } from "@/sanity/load";
 
-const orderLink = whatsappLink(
-  `Bună! Am descoperit ${BRAND} și aș dori să comand un tocător din lemn masiv.`
-);
+type HeroProps = {
+  brand: string;
+  headline: string;
+  subtext: string;
+  heroImage: string;
+  heroImageMobile: string;
+  whatsappNumber: string;
+};
 
-export function Hero() {
+export function Hero({
+  brand,
+  headline,
+  subtext,
+  heroImage,
+  heroImageMobile,
+  whatsappNumber,
+}: HeroProps) {
+  const orderLink = whatsappLinkFor(
+    whatsappNumber,
+    `Bună! Am descoperit ${brand} și aș dori să comand un tocător din lemn masiv.`
+  );
+
   return (
     <section
       id="top"
-      className="wood-grain relative flex min-h-[100svh] items-end overflow-hidden bg-walnut-deep md:bg-[url('/products/hero.jpg')] md:bg-cover md:bg-center"
+      className="wood-grain relative flex min-h-[100svh] items-end overflow-hidden bg-walnut-deep"
     >
+      {/* Desktop background via CSS so mobile only downloads one hero image */}
+      <div
+        className="absolute inset-0 hidden bg-cover bg-center md:block"
+        style={{ backgroundImage: `url(${heroImage})` }}
+        aria-hidden
+      />
       <Image
-        src={HERO_IMAGE_MOBILE}
-        alt="Tocător din lemn masiv lucrat manual — Atelierul48"
+        src={heroImageMobile}
+        alt={`${brand} — tocător din lemn masiv`}
         fill
         priority
         className="object-cover object-[center_28%] md:hidden"
@@ -30,13 +53,13 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] pt-28 sm:px-6 md:px-8 md:pb-24 md:pt-32">
         <p className="animate-fade-up font-display text-[2.65rem] leading-[0.95] tracking-[0.04em] text-cream sm:text-5xl md:text-7xl lg:text-8xl">
-          {BRAND}
+          {brand}
         </p>
         <h1 className="animate-fade-up-delay-1 mt-4 max-w-[18rem] font-display text-[1.35rem] font-light leading-snug text-champagne sm:mt-5 sm:max-w-xl sm:text-3xl md:mt-7 md:text-4xl">
-          Tocătoare din lemn masiv, lucrate manual.
+          {headline}
         </h1>
         <p className="animate-fade-up-delay-1 mt-3 max-w-sm text-[0.95rem] leading-relaxed text-champagne/80 sm:mt-4 md:text-lg">
-          Piese unicat, finisaj food-safe și atenție la fiecare fibră.
+          {subtext}
         </p>
         <div className="animate-fade-up-delay-2 mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
           <a

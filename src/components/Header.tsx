@@ -1,4 +1,4 @@
-import { BRAND, whatsappLink } from "@/lib/constants";
+import { whatsappLinkFor } from "@/sanity/load";
 
 const links = [
   { href: "#catalog", label: "Catalog" },
@@ -7,11 +7,17 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
-const quickWhatsApp = whatsappLink(
-  `Bună! Am descoperit ${BRAND} și aș dori detalii.`
-);
+type HeaderProps = {
+  brand: string;
+  whatsappNumber: string;
+};
 
-export function Header() {
+export function Header({ brand, whatsappNumber }: HeaderProps) {
+  const quickWhatsApp = whatsappLinkFor(
+    whatsappNumber,
+    `Bună! Am descoperit ${brand} și aș dori detalii.`
+  );
+
   return (
     <header className="absolute inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 sm:px-6 md:px-8 md:py-6">
@@ -19,7 +25,7 @@ export function Header() {
           href="#top"
           className="font-display text-lg tracking-[0.04em] text-cream transition-opacity active:opacity-80 sm:text-xl md:text-2xl"
         >
-          {BRAND}
+          {brand}
         </a>
         <nav
           className="hidden items-center gap-8 md:flex"
@@ -38,7 +44,7 @@ export function Header() {
         <div className="flex items-center gap-4 md:hidden">
           <a
             href="#catalog"
-            className="min-h-11 min-w-11 inline-flex items-center justify-center text-sm tracking-wide text-champagne/90"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center text-sm tracking-wide text-champagne/90"
           >
             Catalog
           </a>
@@ -46,7 +52,7 @@ export function Header() {
             href={quickWhatsApp}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-11 inline-flex items-center justify-center bg-champagne/95 px-3.5 text-xs font-medium tracking-wide text-walnut-deep"
+            className="inline-flex min-h-11 items-center justify-center bg-champagne/95 px-3.5 text-xs font-medium tracking-wide text-walnut-deep"
           >
             WhatsApp
           </a>
